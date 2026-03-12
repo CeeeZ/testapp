@@ -1,35 +1,114 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W budowie | Coming Soon</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
+<style>
+    /* Wklejam tutaj style bezpośrednio */
+    :root {
+        --bg-color: #050505;
+        --text-main: #ffffff;
+        --text-dim: rgba(255, 255, 255, 0.6);
+        --accent: #3b82f6;
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
 
-    <main class="container">
-        <div class="glass-card">
-            <div class="badge">Wkrótce otwarcie</div>
-            <h1>Coś wyjątkowego jest w drodze</h1>
-            <p>Pracujemy nad nowym projektem. Nasza strona jest aktualnie w trakcie budowy. Zostaw swój e-mail, aby otrzymać powiadomienie o starcie!</p>
-            
-            <form class="subscribe-form">
-                <input type="email" placeholder="Twój adres e-mail" required>
-                <button type="submit">Powiadom mnie</button>
-            </form>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        overflow: hidden;
+    }
 
-            <div class="socials">
-                <a href="#">GitHub</a>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
+    .background-blobs {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        animation: move 10s infinite alternate;
+    }
+
+    .blob-1 {
+        width: 400px;
+        height: 400px;
+        background: var(--accent);
+        top: -100px;
+        left: -100px;
+    }
+
+    .blob-2 {
+        width: 350px;
+        height: 350px;
+        background: #a855f7;
+        bottom: -50px;
+        right: -50px;
+        animation-delay: 2s;
+    }
+
+    @keyframes move {
+        from { transform: translate(0, 0); }
+        to { transform: translate(50px, 100px); }
+    }
+
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        padding: 40px;
+        text-align: center;
+        max-width: 500px;
+        margin: 20px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 100px;
+        color: var(--accent);
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+
+    h1 { font-size: 2.5rem; margin-bottom: 16px; }
+    p { color: var(--text-dim); line-height: 1.6; margin-bottom: 32px; }
+
+    .subscribe-form { display: flex; gap: 10px; margin-bottom: 30px; }
+    input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        padding: 12px;
+        border-radius: 10px;
+        color: white;
+    }
+
+    button {
+        background: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .socials a {
+        color: var(--text-dim);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 14px;
+    }
+</style>
